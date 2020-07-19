@@ -7,7 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C0466C7324A0F08B008B38A5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0466C7224A0F08B008B38A5 /* main.cpp */; };
+		C008233024BE9D0E0081EAA7 /* UtageNote.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C008232E24BE9D0E0081EAA7 /* UtageNote.cpp */; };
+		C008233324BE9F0D0081EAA7 /* UtageNoteArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C008233124BE9F0D0081EAA7 /* UtageNoteArray.cpp */; };
+		C01D645424B564C1005F76BB /* MIDIFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C01D645224B564C1005F76BB /* MIDIFile.cpp */; };
+		C01D645724B5663E005F76BB /* MIDIHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C01D645524B5663E005F76BB /* MIDIHeader.cpp */; };
+		C01D645A24B566E4005F76BB /* MIDITrack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C01D645924B566E4005F76BB /* MIDITrack.cpp */; };
+		C01D645D24B5671F005F76BB /* MIDIEvent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C01D645C24B5671F005F76BB /* MIDIEvent.cpp */; };
+		C01D646024B568F4005F76BB /* MIDIData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C01D645F24B568F4005F76BB /* MIDIData.cpp */; };
+		C0466C7E24A0F0B3008B38A5 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0466C7A24A0F0B3008B38A5 /* SDL2_image.framework */; };
+		C0466C7F24A0F0B3008B38A5 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0466C7B24A0F0B3008B38A5 /* SDL2_ttf.framework */; };
+		C0466C8024A0F0B3008B38A5 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0466C7C24A0F0B3008B38A5 /* SDL2_mixer.framework */; };
+		C0466C8124A0F0B3008B38A5 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0466C7D24A0F0B3008B38A5 /* SDL2.framework */; };
+		C0466CAD24AA5695008B38A5 /* SDLFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0466CAC24AA5695008B38A5 /* SDLFile.cpp */; };
+		C098008A24B40E0B00680C8A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C098008124B40E0B00680C8A /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +35,28 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C008232E24BE9D0E0081EAA7 /* UtageNote.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UtageNote.cpp; sourceTree = "<group>"; };
+		C008232F24BE9D0E0081EAA7 /* UtageNote.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UtageNote.hpp; sourceTree = "<group>"; };
+		C008233124BE9F0D0081EAA7 /* UtageNoteArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UtageNoteArray.cpp; sourceTree = "<group>"; };
+		C008233224BE9F0D0081EAA7 /* UtageNoteArray.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UtageNoteArray.hpp; sourceTree = "<group>"; };
+		C01D645224B564C1005F76BB /* MIDIFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MIDIFile.cpp; sourceTree = "<group>"; };
+		C01D645324B564C1005F76BB /* MIDIFile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MIDIFile.hpp; sourceTree = "<group>"; };
+		C01D645524B5663E005F76BB /* MIDIHeader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MIDIHeader.cpp; sourceTree = "<group>"; };
+		C01D645624B5663E005F76BB /* MIDIHeader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MIDIHeader.hpp; sourceTree = "<group>"; };
+		C01D645824B566E4005F76BB /* MIDITrack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MIDITrack.hpp; sourceTree = "<group>"; };
+		C01D645924B566E4005F76BB /* MIDITrack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MIDITrack.cpp; sourceTree = "<group>"; };
+		C01D645B24B5671F005F76BB /* MIDIEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MIDIEvent.hpp; sourceTree = "<group>"; };
+		C01D645C24B5671F005F76BB /* MIDIEvent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MIDIEvent.cpp; sourceTree = "<group>"; };
+		C01D645E24B568F4005F76BB /* MIDIData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MIDIData.hpp; sourceTree = "<group>"; };
+		C01D645F24B568F4005F76BB /* MIDIData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MIDIData.cpp; sourceTree = "<group>"; };
 		C0466C6F24A0F08B008B38A5 /* SoundGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SoundGame; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0466C7224A0F08B008B38A5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C0466C7A24A0F0B3008B38A5 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
+		C0466C7B24A0F0B3008B38A5 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
+		C0466C7C24A0F0B3008B38A5 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
+		C0466C7D24A0F0B3008B38A5 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		C0466CAB24AA5695008B38A5 /* SDLFile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SDLFile.hpp; sourceTree = "<group>"; };
+		C0466CAC24AA5695008B38A5 /* SDLFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SDLFile.cpp; sourceTree = "<group>"; };
+		C098008124B40E0B00680C8A /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +64,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0466C7E24A0F0B3008B38A5 /* SDL2_image.framework in Frameworks */,
+				C0466C7F24A0F0B3008B38A5 /* SDL2_ttf.framework in Frameworks */,
+				C0466C8024A0F0B3008B38A5 /* SDL2_mixer.framework in Frameworks */,
+				C0466C8124A0F0B3008B38A5 /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +79,7 @@
 			children = (
 				C0466C7124A0F08B008B38A5 /* SoundGame */,
 				C0466C7024A0F08B008B38A5 /* Products */,
+				C0466C7924A0F0B3008B38A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +94,36 @@
 		C0466C7124A0F08B008B38A5 /* SoundGame */ = {
 			isa = PBXGroup;
 			children = (
-				C0466C7224A0F08B008B38A5 /* main.cpp */,
+				C01D645F24B568F4005F76BB /* MIDIData.cpp */,
+				C01D645E24B568F4005F76BB /* MIDIData.hpp */,
+				C01D645C24B5671F005F76BB /* MIDIEvent.cpp */,
+				C01D645B24B5671F005F76BB /* MIDIEvent.hpp */,
+				C01D645924B566E4005F76BB /* MIDITrack.cpp */,
+				C01D645824B566E4005F76BB /* MIDITrack.hpp */,
+				C01D645524B5663E005F76BB /* MIDIHeader.cpp */,
+				C01D645624B5663E005F76BB /* MIDIHeader.hpp */,
+				C01D645224B564C1005F76BB /* MIDIFile.cpp */,
+				C01D645324B564C1005F76BB /* MIDIFile.hpp */,
+				C098008124B40E0B00680C8A /* main.cpp */,
+				C0466CAC24AA5695008B38A5 /* SDLFile.cpp */,
+				C0466CAB24AA5695008B38A5 /* SDLFile.hpp */,
+				C008232E24BE9D0E0081EAA7 /* UtageNote.cpp */,
+				C008232F24BE9D0E0081EAA7 /* UtageNote.hpp */,
+				C008233124BE9F0D0081EAA7 /* UtageNoteArray.cpp */,
+				C008233224BE9F0D0081EAA7 /* UtageNoteArray.hpp */,
 			);
 			path = SoundGame;
+			sourceTree = "<group>";
+		};
+		C0466C7924A0F0B3008B38A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0466C7A24A0F0B3008B38A5 /* SDL2_image.framework */,
+				C0466C7C24A0F0B3008B38A5 /* SDL2_mixer.framework */,
+				C0466C7B24A0F0B3008B38A5 /* SDL2_ttf.framework */,
+				C0466C7D24A0F0B3008B38A5 /* SDL2.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -88,7 +152,7 @@
 		C0466C6724A0F08B008B38A5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = mojito;
 				TargetAttributes = {
 					C0466C6E24A0F08B008B38A5 = {
@@ -119,7 +183,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0466C7324A0F08B008B38A5 /* main.cpp in Sources */,
+				C098008A24B40E0B00680C8A /* main.cpp in Sources */,
+				C01D645424B564C1005F76BB /* MIDIFile.cpp in Sources */,
+				C008233324BE9F0D0081EAA7 /* UtageNoteArray.cpp in Sources */,
+				C008233024BE9D0E0081EAA7 /* UtageNote.cpp in Sources */,
+				C0466CAD24AA5695008B38A5 /* SDLFile.cpp in Sources */,
+				C01D645A24B566E4005F76BB /* MIDITrack.cpp in Sources */,
+				C01D645724B5663E005F76BB /* MIDIHeader.cpp in Sources */,
+				C01D646024B568F4005F76BB /* MIDIData.cpp in Sources */,
+				C01D645D24B5671F005F76BB /* MIDIEvent.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,7 +310,12 @@
 		C0466C7724A0F08B008B38A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -246,7 +323,12 @@
 		C0466C7824A0F08B008B38A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
