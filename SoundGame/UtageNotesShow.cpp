@@ -99,7 +99,8 @@ void UtageNotesShow::draw_background()
 {
 	// fill background
 	SDL_Rect rect = { 0, 0, GAME_WIDTH_BY_DOT, GAME_HEIGHT_BY_DOT };
-	m_sdl.fill_rect(rect, m_sdl.get_color_code_from_rgb(63, 43, 86));
+	m_sdl.fill_solid_rect(rect, m_sdl.get_color_code_from_rgb(63, 43, 86, 255));
+//	m_sdl.fill_rect(rect, m_sdl.get_color_code_from_rgb(255, 43, 86, 255));
 
 	// draw lane's lines
 	SDL_Point p1, p2;
@@ -109,22 +110,39 @@ void UtageNotesShow::draw_background()
 	{
 		p1.x = GAME_LANE_LEFT_BY_DOT + GAME_LANE_WIDTH_BY_DOT * i;
 		p2.x = p1.x;
-		for (int j = 0; j < 6; j++)
+		for (int j = 0; j < GAME_LANE_EDGE_WIDTH; j++)
 		{
-			m_sdl.draw_line(p1, p2, m_sdl.get_color_code_from_rgb(252 - j*25, 219 - j*25, 37 + j*12));
+			m_sdl.draw_line(p1, p2, m_sdl.get_color_code_from_rgb(252 - j*25, 219 - j*25, 37 + j*12, 255));
 			p1.x += 1;
 			p2.x += 1;
 		}
 	}
+
+	// draw hit line
+	SDL_Rect hit_line;
+	hit_line.x = GAME_LANE_LEFT_BY_DOT;
+	hit_line.y = GAME_LANE_BOTTOM_BY_DOT - GAME_HIT_POSITION_FROM_BOTTOM_BY_DOT;
+	hit_line.w = GAME_LANE_WIDTH_BY_DOT * GAME_NUM_OF_LANES + GAME_LANE_EDGE_WIDTH;
+	hit_line.h = 5;
+	m_sdl.fill_blended_rect(hit_line, m_sdl.get_color_code_from_rgb(127, 255, 255, 255/3));
 }
 
 // draws notes
 void UtageNotesShow::draw_notes(SDLTimer &music_timer)
 {
+	// to draw notes late
+	unsigned long time_gap;
+	time_gap = (double(GAME_HIT_POSITION_FROM_BOTTOM_BY_DOT) / double(GAME_HEIGHT_BY_DOT)) * m_second_in_lane;
+
 	// calc time range to show
 	unsigned long begin, end;
+
+	if (music_timer.get_ticks() < time_gap)
+	{
+		return;
+	}
 	
-	begin = music_timer.get_ticks();
+	begin = music_timer.get_ticks() - time_gap;
 	end   = begin + m_second_in_lane;
 
 	// build up notes
@@ -134,19 +152,20 @@ void UtageNotesShow::draw_notes(SDLTimer &music_timer)
 	SDL_Point p1, p2;
 	p1.x = 0;
 	p2.x = GAME_WIDTH_BY_DOT;
-	Uint32 color_code = m_sdl.get_color_code_from_rgb(255, 128, 128);
-	
+	Uint32 color_code = m_sdl.get_color_code_from_rgb(255, 128, 128, 255);
+
 	// draw
 	unsigned long occurrence_time;
 	int y_pos;
 	for (UtageNote *pnote : note_array)
 	{
+		
 		occurrence_time = pnote->get_occurrence_time() - begin;
 
 		y_pos = GAME_LANE_BOTTOM_BY_DOT - GAME_HEIGHT_BY_DOT*double(occurrence_time)/m_second_in_lane;
 		
-		p1.x = GAME_LANE_LEFT_BY_DOT + (pnote->get_note_number() - MIDI_FIRST_NOTE_NUMBER)*GAME_NOTE_WIDTH_BY_DOT;
-		p2.x = p1.x + GAME_NOTE_WIDTH_BY_DOT;
+		p1.x = GAME_LANE_LEFT_BY_DOT + (pnote->get_note_number() - MIDI_FIRST_NOTE_NUMBER)*GAME_NOTE_WIDTH_BY_DOT + GAME_LANE_EDGE_WIDTH;
+		p2.x = p1.x + GAME_NOTE_WIDTH_BY_DOT - GAME_LANE_EDGE_WIDTH;
 
 		for (int i = -3; i <= 3; i++)
 		{

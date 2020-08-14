@@ -31,6 +31,8 @@ protected:
 
 //	SDL_Surface *get_window_surface();
 	SDL_Renderer *get_window_renderer() { return m_prenderer; }
+	void fill_rect_internal(SDL_Rect rect, Uint32 color_code);
+
 	
 	// about line slope
 	int get_slope(SDL_Point p1, SDL_Point p2);
@@ -59,10 +61,11 @@ public:
 	void blit_image(SDL_Surface *image, SDL_Rect *src, int dest_x, int dest_y, double ratio);
 	void blit_image(SDL_Texture *ptexture, SDL_Rect *src, int dest_x, int dest_y, double ratio);
 	void update_window();
-	void fill_rect(SDL_Rect rect, Uint32 color_code);
 	Uint32 get_color_code_from_rgb(int red, int green, int blue, int alpha = SDL_ALPHA_OPAQUE);
 	void get_rgb_from_color_code(Uint32 color_code, Uint8 *pred, Uint8 *pgreen, Uint8 *pblue, Uint8 *palpha=0);
 	void draw_line(SDL_Point p1, SDL_Point p2, Uint32 color_code);
+	void fill_blended_rect(SDL_Rect rect, Uint32 color_code);
+	void fill_solid_rect(SDL_Rect rect, Uint32 color_code);
 	/*
 	 * about mixer
 	 */

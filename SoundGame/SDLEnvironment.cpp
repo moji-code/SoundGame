@@ -212,24 +212,38 @@ void SDLEnvironment::blit_image(SDL_Texture *ptexture, SDL_Rect *src, int dest_x
  * fill rectangle with specified color
  * MOD: use SDL_RenderFillRect instead of SDL_FillRect with SDL_Surface
  */
-void SDLEnvironment::fill_rect(SDL_Rect rect, Uint32 color_code)
+void SDLEnvironment::fill_rect_internal(SDL_Rect rect, Uint32 color_code)
 {
 	// spreds rectangle
 	rect.x *= m_magnification;
 	rect.y *= m_magnification;
 	rect.w *= m_magnification;
 	rect.h *= m_magnification;
-	
-//	SDL_FillRect(get_window_surface(), &rect, color_code);
+
 
 	// set render color
 	Uint8 red, green, blue, alpha;
 	get_rgb_from_color_code(color_code, &red, &green, &blue, &alpha);
 	SDL_SetRenderDrawColor(get_window_renderer(), red, green, blue, alpha);
 	
+	// set render mode
+//	SDL_SetRenderDrawBlendMode(get_window_renderer(), SDL_BLENDMODE_BLEND);
+	
 	// fill rect
 	SDL_RenderFillRect(get_window_renderer(), &rect);
 }
+
+void SDLEnvironment::fill_blended_rect(SDL_Rect rect, Uint32 color_code)
+{
+	SDL_SetRenderDrawBlendMode(get_window_renderer(), SDL_BLENDMODE_BLEND);
+	fill_rect_internal(rect, color_code);
+}
+void SDLEnvironment::fill_solid_rect(SDL_Rect rect, Uint32 color_code)
+{
+	SDL_SetRenderDrawBlendMode(get_window_renderer(), SDL_BLENDMODE_NONE);
+	fill_rect_internal(rect, color_code);
+}
+
 
 // MOD: create original rgb format (RRGGBBAA: RR = 1 byte)
 //		to use SDL_Renderer instead of SDL_Surface
