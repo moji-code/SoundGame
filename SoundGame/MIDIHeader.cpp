@@ -37,10 +37,10 @@ bool MIDIHeader::read(MIDIFile *pfile)
 	}
 
 	// read following parameters from MIDI header
-	m_header_length = pfile->read_sequential_data(4);	// header length
-	m_format = pfile->read_sequential_data(2);			// format
-	m_num_of_tracks = pfile->read_sequential_data(2);	// number of tracks
-	m_time_base = pfile->read_sequential_data(2);		// time base
+	m_header_length = pfile->read_fixed_length_data(4);	// header length
+	m_format 		= pfile->read_fixed_length_data(2);	// format
+	m_num_of_tracks = pfile->read_fixed_length_data(2);	// number of tracks
+	m_time_base 	= pfile->read_fixed_length_data(2);	// time base
 
 	return true;
 }

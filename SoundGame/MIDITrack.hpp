@@ -19,7 +19,7 @@ class MIDITrack
 {
 protected:
 	unsigned long m_track_length;
-	vector<MIDIEvent *> m_events;
+	vector<MIDIEvent *> m_events;		// MIDI Events
 
 public:
 	MIDITrack();
@@ -27,10 +27,11 @@ public:
 	bool read(MIDIFile *pfile);
 	// about event
 	string get_instrument_name();
+	unsigned long get_tempo();
 	vector<MIDIEvent *>::iterator get_begin_of_events() { 	return m_events.begin(); }
 	vector<MIDIEvent *>::iterator get_end_of_events() { return m_events.end(); }
 	// for debug
-	void show();
+	void show(int track_num);
 };
 
 #endif /* MIDITrack_hpp */

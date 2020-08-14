@@ -10,6 +10,8 @@
 #define sdl_h
 
 #include <SDL2/sdl.h>
+#include <SDL2_image/SDL_image.h>
+#include <SDL2_mixer/SDL_mixer.h>
 
 
 #endif /* sdl_h */

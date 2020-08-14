@@ -42,7 +42,7 @@ bool MIDITrack::read(MIDIFile *pfile)
 	}
 	
 	// read length of this track in the file
-	m_track_length = pfile->read_sequential_data(4);	// header length
+	m_track_length = pfile->read_fixed_length_data(4);	// header length
 
 	// prepare running status byte
 	unsigned char previous_status_byte = 0x00;
@@ -96,14 +96,32 @@ string MIDITrack::get_instrument_name()
 	return string("");
 }
 
+unsigned long MIDITrack::get_tempo()
+{
+	// check each event
+	for (MIDIEvent *pevent : m_events)
+	{
+		// if its id is tempo
+		if (pevent->get_event_id() == MIDIEvent::event_id::tempo)
+		{
+			// return its value
+			return pevent->get_tempo();
+		}
+	}
+	
+	// when no one matched, return 0
+	return 0;
+}
+
+
 
 /*
  * show track information
  */
-void MIDITrack::show()
+void MIDITrack::show(int track_num)
 {
 	cout << endl;
-	cout << "MTrk" << endl;
+	cout << "MTrk " << track_num << endl;
 	cout << "----------" << endl;
 	cout << "length: " << m_track_length << endl;
 	

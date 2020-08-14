@@ -49,7 +49,7 @@ void MIDIEvent::read_a_event(MIDIFile *pfile, unsigned char previous_status_code
 	if ((first_byte & 0x80) == 0x00)
 	{
 		// it is not an event code. it's a note number
-		m_note_number = first_byte;
+		m_note_info.note_number = first_byte;
 		m_is_note_number_already_set = true;
 
 		// then use 'running status' = previous event's midi channel message
@@ -76,9 +76,10 @@ void MIDIEvent::read_a_event(MIDIFile *pfile, unsigned char previous_status_code
 			m_event_id = MIDIEvent::event_id::note_on;
 			if (m_is_note_number_already_set == false)
 			{
-				m_note_number = pfile->get_a_byte();
+				m_note_info.note_number = pfile->get_a_byte();
 			}
-			skip_data(pfile, 1);
+			m_note_info.velocity = pfile->get_a_byte();
+//			skip_data(pfile, 1);	// for velocity
 		}
 		// if it was 'note off'
 		else if ((status_code & 0xF0) == 0x80)
@@ -87,9 +88,10 @@ void MIDIEvent::read_a_event(MIDIFile *pfile, unsigned char previous_status_code
 			m_event_id = MIDIEvent::event_id::note_off;
 			if (m_is_note_number_already_set == false)
 			{
-				m_note_number = pfile->get_a_byte();
+				m_note_info.note_number = pfile->get_a_byte();
 			}
-			skip_data(pfile, 1);
+			m_note_info.velocity = pfile->get_a_byte();
+//			skip_data(pfile, 1);	// for velocity
 		}
 		else
 		{
@@ -164,7 +166,7 @@ void MIDIEvent::read_tempo(MIDIFile *pfile)
 	// skip a byte (it may be 0x03)
 	pfile->get_a_byte();
 	// read tempo information that consist of 3 bytes
-	m_tempo = pfile->read_sequential_data(3);
+	m_tempo = pfile->read_fixed_length_data(3);
 }
 
 /*
@@ -228,11 +230,12 @@ void MIDIEvent::show()
 	switch (m_event_id)
 	{
 		case event_id::note_off:
-			cout << "note off (" << int(m_note_number) << ")" << endl;
+			cout << "note off " << dec << int(m_note_info.note_number) << " (0x"  << hex << int(m_note_info.note_number) << ")" << endl;
 			break;
 
 		case event_id::note_on:
-			cout << "note on (" << int(m_note_number) << ")" << endl;
+			cout << "note on " << dec << int(m_note_info.note_number)
+			<< hex << " (0x" << int(m_note_info.note_number) << ") v:" << dec << int(m_note_info.velocity) << " (0x" << hex << int(m_note_info.velocity) << ")" << endl;
 			break;
 			
 		case event_id::instrument_name:

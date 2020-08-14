@@ -15,7 +15,7 @@
 class MIDIFile : public SDLFile
 {
 public:
-	unsigned long read_sequential_data(int num_of_bytes);
+	unsigned long read_fixed_length_data(int num_of_bytes);
 	unsigned long read_variable_length_data();
 	bool check_header_ID(string id);
 };

@@ -11,19 +11,19 @@
 /*
  * read sequential bytes like the length number in header section of MIDI file
  */
-unsigned long MIDIFile::read_sequential_data(int num_of_bytes)
+unsigned long MIDIFile::read_fixed_length_data(int num_of_bytes)
 {
 	unsigned char byte;
-	unsigned long length = 0;
+	unsigned long value = 0;
 	
 	for (int current_index = 0; current_index < num_of_bytes; current_index++)
 	{
 		byte = get_a_byte();
-		length = length << 8;
-		length = length | byte;
+		value = value << 8;
+		value = value | byte;
 	}
 	
-	return length;
+	return value;
 }
 
 /*

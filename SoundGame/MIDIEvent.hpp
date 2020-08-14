@@ -30,7 +30,11 @@ protected:
 	union
 	{
 		unsigned long m_tempo;			// occupies 3 bytes
-		unsigned char m_note_number;	// occupies 1 byte
+		struct
+		{
+			unsigned char note_number;	// occupies 1 byte
+			unsigned char velocity;		// occupies 1 byte
+		} m_note_info;
 	};
 	bool m_is_note_number_already_set;
 	
@@ -53,13 +57,15 @@ public:
 	// about attributes
 	unsigned long get_delta_time() { return m_delta_time; }
 	int get_event_id() { return m_event_id; }
-	unsigned char get_note_number() { return m_note_number; }
+	unsigned char get_note_number() { return m_note_info.note_number; }
+	unsigned char get_velocity() { return m_note_info.velocity; }
 	enum event_id
 	{
 		end_of_track, note_off, note_on, tempo, instrument_name,
 		other
 	};
 	string get_instrument_name() { return m_instrument_name; }
+	unsigned long get_tempo() { return m_tempo; }
 	bool is_midi_channel_message();
 	unsigned char get_status_byte() { return m_status_code; }
 	// for debug

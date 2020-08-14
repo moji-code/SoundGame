@@ -23,6 +23,7 @@ protected:
 public:
 	MIDIHeader();
 	bool read(MIDIFile *pfile);
+	unsigned long get_time_base() { return m_time_base; }
 	// for debug
 	void show();
 };

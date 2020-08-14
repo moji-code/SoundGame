@@ -21,6 +21,10 @@ protected:
 
 public:
 	void init(MIDIEvent *pevent, unsigned long absolute_time, unsigned long duration);
+	// getter
+	unsigned long get_occurrence_time() { return m_absolute_time; }
+	unsigned long get_duration() { return m_duration; }
+	unsigned char get_note_number() { return m_note_number; }
 	// for debug
 	void show();
 };
