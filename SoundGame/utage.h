@@ -19,6 +19,7 @@
  * numbers
  */
 #define GAME_NUM_OF_LANES		(4)
+#define MIDI_FIRST_NOTE_NUMBER	(72)
 
 /*
  * positions

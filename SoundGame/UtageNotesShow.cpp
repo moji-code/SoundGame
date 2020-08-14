@@ -144,6 +144,9 @@ void UtageNotesShow::draw_notes(SDLTimer &music_timer)
 		occurrence_time = pnote->get_occurrence_time() - begin;
 
 		y_pos = GAME_LANE_BOTTOM_BY_DOT - GAME_HEIGHT_BY_DOT*double(occurrence_time)/m_second_in_lane;
+		
+		p1.x = GAME_LANE_LEFT_BY_DOT + (pnote->get_note_number() - MIDI_FIRST_NOTE_NUMBER)*GAME_NOTE_WIDTH_BY_DOT;
+		p2.x = p1.x + GAME_NOTE_WIDTH_BY_DOT;
 
 		for (int i = -3; i <= 3; i++)
 		{
